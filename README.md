@@ -145,12 +145,18 @@ uniapp-vue3-ts-uview-Tailwind-CSS/
 // src/store/user.ts
 import { defineStore } from 'pinia'
 
+interface UserInfo {
+  id: string
+  name: string
+  avatar?: string
+}
+
 export const useUserStore = defineStore('user', {
   state: () => ({
-    userInfo: null
+    userInfo: null as UserInfo | null
   }),
   actions: {
-    setUserInfo(info: any) {
+    setUserInfo(info: UserInfo) {
       this.userInfo = info
     }
   }
@@ -233,7 +239,7 @@ module.exports = {
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "types": ["@dcloudio/types"]
+    "types": ["@dcloudio/uni-app-types"]
   }
 }
 ```
@@ -342,7 +348,17 @@ app.use(uviewPlus)
 确保安装了 uni-app 的类型定义：
 
 ```bash
-npm install -D @dcloudio/types
+npm install -D @dcloudio/uni-app-types
+```
+
+并在 `tsconfig.json` 中配置：
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@dcloudio/uni-app-types"]
+  }
+}
 ```
 
 ## 📝 编码规范 (Coding Standards)
