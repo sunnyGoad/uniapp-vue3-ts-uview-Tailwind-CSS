@@ -308,10 +308,23 @@ npm install
 
 ### 2. Tailwind CSS 样式不生效？
 
-确保在 `main.ts` 中导入了 Tailwind CSS：
+确保正确配置了 Tailwind CSS。在 uniapp 项目中，需要：
+
+1. 正确配置 `tailwind.config.js`
+2. 在 Vite 配置中启用 Tailwind CSS PostCSS 插件
+3. 或者在全局样式文件中引入 Tailwind 指令：
+
+```css
+/* src/styles/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+然后在 `main.ts` 中导入该样式文件：
 
 ```typescript
-import 'tailwindcss/tailwind.css'
+import '@/styles/tailwind.css'
 ```
 
 ### 3. uview-plus 组件不显示？
