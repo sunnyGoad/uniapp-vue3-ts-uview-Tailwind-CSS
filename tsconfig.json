@@ -14,10 +14,10 @@
     "noImplicitThis": true,                  // ✅ 禁止隐式 this
     "alwaysStrict": true,                    // ✅ 始终使用严格模式
     
-    // 代码质量检查 - 暂时关闭，后续启用
-    "noUnusedLocals": false,                 // ⏸️ 后续启用
-    "noUnusedParameters": false,             // ⏸️ 后续启用
-    "noImplicitReturns": false,              // ⏸️ 后续启用
+    // 代码质量检查
+    "noUnusedLocals": true,                  // ✅ 检查未使用的局部变量
+    "noUnusedParameters": true,              // ✅ 检查未使用的函数参数
+    "noImplicitReturns": true,               // ✅ 检查所有代码路径都有返回值
     "noFallthroughCasesInSwitch": true,      // ✅ 检查 switch 穿透
     
     // Vue & JSX

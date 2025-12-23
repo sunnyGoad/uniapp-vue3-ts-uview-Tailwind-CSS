@@ -1,16 +1,52 @@
 {
   "pages": [
     {
+      "path": "pages/activity/activity",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "首页"
       }
     },
     {
       "path": "pages/temple/temple",
       "style": {
-        "navigationBarTitleText": "示例页面",
+        "navigationStyle": "custom",
         "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/game/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "教育游戏"
+      }
+    },
+    {
+      "path": "pages/game/word-match/word-match",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "单词消消乐"
+      }
+    },
+    {
+      "path": "pages/game/quiz/quiz",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "趣味闯关"
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登录"
       }
     }
   ],
@@ -22,17 +58,33 @@
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3c9cff",
+    "selectedColor": "#6366f1",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "static/tab_icon1.png",
+        "selectedIconPath": "static/tab_icon1_1.png"
+      },
+      {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/tab_icon2.png",
+        "selectedIconPath": "static/tab_icon2_1.png"
+      },
+      {
+        "pagePath": "pages/game/index",
+        "text": "游戏",
+        "iconPath": "static/tab_icon3.png",
+        "selectedIconPath": "static/tab_icon3_1.png"
       },
       {
         "pagePath": "pages/temple/temple",
-        "text": "示例"
+        "text": "示例",
+        "iconPath": "static/tab_icon4.png",
+        "selectedIconPath": "static/tab_icon4_1.png"
       }
     ]
   }

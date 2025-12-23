@@ -20,6 +20,8 @@ export interface BasePageProps {
   finishedText?: string
   /** 自动触发首次加载 */
   autoLoad?: boolean
+  /** 是否有 tabbar，用于调整页面高度 */
+  hasTabbar?: boolean
 }
 
 /**

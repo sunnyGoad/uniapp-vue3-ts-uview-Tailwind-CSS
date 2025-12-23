@@ -4,9 +4,9 @@
 export const themeConfig = {
   // 颜色配置
   colors: {
-    primary: '#3c9cff',
-    primaryLight: '#66b3ff',
-    primaryDark: '#0081ff',
+    primary: '#6366f1',
+    primaryLight: '#818cf8',
+    primaryDark: '#4f46e5',
     success: '#5ac725',
     successLight: '#7ed321',
     successDark: '#3fa518',

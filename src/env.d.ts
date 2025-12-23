@@ -39,8 +39,11 @@ declare global {
 }
 
 // 禁用某些 TypeScript 检查以避免 Vue 组件内部错误
+// 使用宽松的类型定义来避免 strict 模式下的模板类型检查误报
 declare module '*.vue' {
-  import { DefineComponent } from 'vue'
+  import type { DefineComponent } from 'vue'
+  // 使用 any 类型避免模板中的变量和方法标红
+  // 注意：这不会影响 <script> 部分的 TypeScript 严格检查
   const component: DefineComponent<any, any, any>
   export default component
 }

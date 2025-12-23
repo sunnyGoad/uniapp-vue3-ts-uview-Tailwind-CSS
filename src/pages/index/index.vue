@@ -1,99 +1,91 @@
 <template>
-  <view class="index-page">
-    <!-- 顶部横幅 -->
-    <view class="index-banner bg-primary p-4">
-      <text class="text-white text-2xl font-bold">uniapp 基础框架</text>
-      <text class="text-white text-base mt-2">Vue3 + TypeScript + uView + Tailwind CSS</text>
-    </view>
+  <BasePage :has-tabbar="true">
+    <!-- 沉浸式顶部 -->
+    <template #header>
+      <view class="nav-header glass-effect">
+        <text class="nav-title premium-gradient-text">UNIAFF.ULTRA</text>
+      </view>
+    </template>
 
-    <!-- 功能卡片 -->
-    <view class="index-content p-3">
-      <!-- 核心功能 -->
-      <view class="index-section mb-4">
-        <text class="text-lg font-semibold text-dark mb-3">核心功能</text>
-        <view class="index-grid">
-          <view
-            v-for="feature in features"
-            :key="feature.id"
-            class="index-card bg-white p-3 rounded-lg shadow"
-            @click="handleCardClick(feature)"
-          >
-            <text class="index-card-icon">{{ feature.icon }}</text>
-            <text class="text-base font-medium text-dark mt-2">{{ feature.title }}</text>
-            <text class="text-sm text-gray mt-1">{{ feature.desc }}</text>
-          </view>
+    <!-- 首页内容 -->
+    <view class="index-content">
+      <!-- Hero 区域 -->
+      <view class="hero-section">
+        <view class="hero-bg"></view>
+        <view class="hero-info animate-fade-in">
+          <text class="hero-title">构建前沿体验</text>
+          <text class="hero-subtitle">基于 Vue3 + TypeScript 的极致开发底座</text>
         </view>
       </view>
 
-      <!-- 快速开始 -->
-      <view class="index-section">
-        <text class="text-lg font-semibold text-dark mb-3">快速开始</text>
-        <view class="index-steps bg-white p-3 rounded-lg shadow">
+      <!-- 核心特性网格 -->
+      <view class="section-container">
+        <view class="section-header">
+          <text class="section-title">核心引擎</text>
+          <text class="section-more">探索全部</text>
+        </view>
+        
+        <view class="feature-grid">
           <view
-            v-for="(step, index) in steps"
-            :key="index"
-            class="index-step"
+            v-for="feature in features"
+            :key="feature.id"
+            class="feature-card soft-card"
+            @click="handleCardClick(feature)"
           >
-            <view class="index-step-number bg-primary text-white">{{ index + 1 }}</view>
-            <view class="index-step-content flex-1">
-              <text class="text-base font-medium text-dark">{{ step.title }}</text>
-              <text class="text-sm text-gray mt-1">{{ step.desc }}</text>
+            <view class="feature-icon-wrap" :style="{ background: feature.gradient }">
+              <text class="feature-icon">{{ feature.icon }}</text>
+            </view>
+            <view class="feature-body">
+              <text class="feature-title">{{ feature.title }}</text>
+              <text class="feature-desc">{{ feature.desc }}</text>
             </view>
           </view>
         </view>
       </view>
 
-      <!-- 操作按钮 -->
-      <view class="index-actions mt-4">
-        <u-button type="primary" size="large" @click="gotoTemple">
-          查看示例页面
+      <!-- 操作区 -->
+      <view class="section-container pb-8">
+        <u-button
+          color="linear-gradient(135deg, #6366f1 0%, #a855f7 100%)"
+          shape="circle"
+          size="large"
+          customStyle="box-shadow: 0 10rpx 30rpx rgba(99, 102, 241, 0.4); border: none;"
+          @click="gotoTemple"
+        >
+          即刻体验示例
         </u-button>
-        <u-button type="success" size="large" class="mt-2" @click="generateApi">
-          生成 API
-        </u-button>
+
+        <view class="mt-8 flex justify-center">
+          <text class="text-sm text-slate opacity-60">Version 2.0.0 Alpha</text>
+        </view>
       </view>
     </view>
-  </view>
+  </BasePage>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useUserStore } from '@/store'
-
-const userStore = useUserStore()
+import { BasePage } from '@/components/BasePage'
 
 interface Feature {
   id: number
   icon: string
   title: string
   desc: string
-}
-
-interface Step {
-  title: string
-  desc: string
+  gradient: string
 }
 
 const features = ref<Feature[]>([
-  { id: 1, icon: '📦', title: 'Request 请求', desc: '封装请求工具，支持拦截器' },
-  { id: 2, icon: '💾', title: 'Storage 缓存', desc: '支持过期时间的缓存工具' },
-  { id: 3, icon: '🎨', title: '主题配置', desc: '预设 class，快速开发' },
-  { id: 4, icon: '📄', title: 'BasePage 组件', desc: '支持刷新、加载的页面组件' },
-  { id: 5, icon: '🔌', title: 'Swagger 对接', desc: '自动生成 API 和类型' },
-  { id: 6, icon: '📱', title: '多端兼容', desc: '兼容微信小程序和 H5' },
-])
-
-const steps = ref<Step[]>([
-  { title: '安装依赖', desc: 'npm install' },
-  { title: '配置 Swagger', desc: '修改 swagger.config.json' },
-  { title: '生成 API', desc: 'npm run generate:api' },
-  { title: '开始开发', desc: 'npm run dev:h5 或 dev:mp-weixin' },
+  { id: 1, icon: '⚡', title: '高性能请求', desc: '预设拦截器与TS类型增强', gradient: 'rgba(99, 102, 241, 0.1)' },
+  { id: 2, icon: '💎', title: '玻璃态组件', desc: '基于前沿 Glassmorphism 视觉', gradient: 'rgba(34, 211, 238, 0.1)' },
+  { id: 3, icon: '🎨', title: '高级主题', desc: '深邃色彩映射与原子化CSS', gradient: 'rgba(244, 114, 182, 0.1)' },
+  { id: 4, icon: '🚀', title: '开发工厂', desc: '自动化 API 生成与 Shims 注入', gradient: 'rgba(168, 85, 247, 0.1)' },
 ])
 
 const handleCardClick = (feature: Feature) => {
   uni.showToast({
     title: feature.title,
-    icon: 'none',
+    icon: feature.icon as any,
   })
 }
 
@@ -102,94 +94,148 @@ const gotoTemple = () => {
     url: '/pages/temple/temple',
   })
 }
-
-const generateApi = () => {
-  uni.showModal({
-    title: '提示',
-    content: '请在命令行运行: npm run generate:api',
-    showCancel: false,
-  })
-}
 </script>
 
 <style lang="scss" scoped>
-.index-page {
-  min-height: 100vh;
-  background-color: #f8f8f8;
-}
-
-.index-banner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60rpx 40rpx;
-}
-
-.index-content {
-  padding-bottom: 40rpx;
-}
-
-.index-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.index-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
-}
-
-.index-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 30rpx 20rpx;
-  transition: all 0.3s ease;
-
-  &:active {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-}
-
-.index-card-icon {
-  font-size: 60rpx;
-}
-
-.index-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 30rpx;
-}
-
-.index-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 20rpx;
-}
-
-.index-step-number {
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
+.nav-header {
+  padding: 32rpx;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border-bottom: 1rpx solid rgba(99, 102, 241, 0.1);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28rpx;
-  font-weight: bold;
-  flex-shrink: 0;
 }
 
-.index-step-content {
-  display: flex;
-  flex-direction: column;
+.nav-title {
+  font-size: 34rpx;
+  letter-spacing: 4rpx;
+  font-weight: 800;
+  color: #6366f1;
 }
 
-.index-actions {
+.index-content {
+  background-color: #fbfbfe;
+}
+
+.hero-section {
+  position: relative;
+  height: 520rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+  overflow: hidden;
+
+  .hero-bg {
+    position: absolute;
+    top: -100rpx;
+    right: -100rpx;
+    width: 600rpx;
+    height: 600rpx;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .hero-info {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-title {
+    font-size: 64rpx;
+    font-weight: 800;
+    color: #1e1b4b;
+    line-height: 1.2;
+    margin-bottom: 20rpx;
+  }
+
+  .hero-subtitle {
+    font-size: 28rpx;
+    color: #64748b;
+    max-width: 80%;
+  }
+}
+
+.section-container {
+  padding: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+
+  .section-title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #1e1b4b;
+  }
+
+  .section-more {
+    font-size: 24rpx;
+    color: #6366f1;
+    font-weight: 600;
+  }
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+}
+
+.feature-card {
+  padding: 40rpx 32rpx;
+  background: #ffffff;
+  border-radius: 32rpx;
+  box-shadow: 0 10rpx 30rpx rgba(99, 102, 241, 0.05);
+  border: 1rpx solid rgba(99, 102, 241, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  .feature-icon-wrap {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 28rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24rpx;
+    
+    .feature-icon {
+      font-size: 44rpx;
+    }
+  }
+
+  .feature-title {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #1e1b4b;
+    margin-bottom: 8rpx;
+  }
+
+  .feature-desc {
+    font-size: 22rpx;
+    color: #64748b;
+    line-height: 1.4;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
 }
 </style>
