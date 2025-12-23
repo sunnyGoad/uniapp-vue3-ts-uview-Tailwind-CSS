@@ -1,0 +1,25 @@
+{
+  "name": "uniapp-vue3-ts-uview-tailwind",
+  "appid": "__UNI__YOUR_APPID",
+  "description": "uniapp + vue3 + ts + uview + Tailwind CSS 基础框架",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "h5": {
+    "title": "uniapp基础框架",
+    "router": {
+      "mode": "hash",
+      "base": "/"
+    }
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    
+    // 类型检查 - 渐进式启用
+    "strict": true,                          // ✅ 启用严格模式
+    "noImplicitAny": true,                   // ✅ 禁止隐式 any
+    "strictNullChecks": true,                // ✅ 严格空值检查
+    "strictFunctionTypes": true,             // ✅ 严格函数类型检查
+    "strictBindCallApply": true,             // ✅ 严格 bind/call/apply 检查
+    "strictPropertyInitialization": false,   // ⏸️ 暂时关闭，避免大量类错误
+    "noImplicitThis": true,                  // ✅ 禁止隐式 this
+    "alwaysStrict": true,                    // ✅ 始终使用严格模式
+    
+    // 代码质量检查 - 暂时关闭，后续启用
+    "noUnusedLocals": false,                 // ⏸️ 后续启用
+    "noUnusedParameters": false,             // ⏸️ 后续启用
+    "noImplicitReturns": false,              // ⏸️ 后续启用
+    "noFallthroughCasesInSwitch": true,      // ✅ 检查 switch 穿透
+    
+    // Vue & JSX
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    
+    // 模块解析
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    
+    // 路径别名
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["@dcloudio/types", "node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "scripts/**/*.ts",
+    "shims-uni.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.js"]
+}

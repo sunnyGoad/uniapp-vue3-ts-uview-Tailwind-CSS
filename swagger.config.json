@@ -1,0 +1,10 @@
+{
+  "swaggerUrl": "https://petstore.swagger.io/v2/swagger.json",
+  "outputDir": "src/api",
+  "typeOutputDir": "src/api/types",
+  "apiOutputDir": "src/api/modules",
+  "generateTypes": true,
+  "generateApi": true,
+  "excludeTags": [],
+  "includeTags": []
+}
